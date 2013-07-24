@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Railscookies</title>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+ <script src="/socket.io/socket.io.js"></script>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn" if user_signed_in? %>
+      </div>
+    </div>
+  </div>
+
+  <div class="main container">
+    <% if notice %><p class="alert alert-info"><%= notice %></p><% end %>
+    <% if alert %><p class="alert alert-error"><%= alert %></p><% end %>
+
+    <%= yield %>
+  </div>
+</body>
+</html>
